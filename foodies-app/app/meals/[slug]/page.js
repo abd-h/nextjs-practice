@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 const SomeSlugPage = ({ params }) => {
   console.log(params);
+  
 
   return (
     <main>
