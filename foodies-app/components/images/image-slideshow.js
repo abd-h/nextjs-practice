@@ -34,7 +34,7 @@ const ImageSlideShow = () => {
 
     return () => clearInterval(interval);
   }, []);
-   clear.log()
+
 
     return (
       <div className={classes.slideshow}>

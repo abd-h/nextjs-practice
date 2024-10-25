@@ -1,15 +1,36 @@
-import React from 'react';
-import Link from 'next/link';
+import Image from "next/image";
+
+import mealIcon from "@/assets/icons/meal.png";
+import communityIcon from "@/assets/icons/community.png";
+import eventsIcon from "@/assets/icons/events.png";
+import classes from "./page.module.css";
 
 const CommunityPage = () => {
   return (
-    <main>
-      <h1>CommunityPage</h1>
-      <p>
-        <Link href="./">Back</Link>
-      </p>
-    </main>
-  );
-}
+    <>
+      <main className={classes.main}>
+        <h2>Community Perks</h2>
 
-export default CommunityPage
+        <ul className={classes.perks}>
+          <li>
+            <Image src={mealIcon} alt="A delicious meal" />
+            <p>Share & discover recipes</p>
+          </li>
+          <li>
+            <Image src={communityIcon} alt="A crowd of people, cooking" />
+            <p>Find new friends & like-minded people</p>
+          </li>
+          <li>
+            <Image
+              src={eventsIcon}
+              alt="A crowd of people at a cooking event"
+            />
+            <p>Participate in exclusive events</p>
+          </li>
+        </ul>
+      </main>
+    </>
+  );
+};
+
+export default CommunityPage;
