@@ -1,13 +1,25 @@
-import React from 'react'
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+
+import classes from './page.module.css';
 
 const ShareMealpage = () => {
+
   return (
-    <main>
-      <h1>ShareMealpage</h1>
-      <p>
-        <Link href="./">Back</Link>
-      </p>
-    </main>
+    <>
+      <header className={classes.header}>
+        <div className={classes.image}><Image /></div>
+        <div className={headerText}>
+          <h1>Title</h1>
+          <p className={ classes.creator }> <a href={ `mailto:${'EMAIL'}` }></a></p>
+          <p className={classes.summary}>Summary</p>
+        </div>
+      </header>
+      <main>
+      <p className={classes.instructions} dangerouslySetInnerHTML={{__html: '....'}} >Instructions</p>
+      </main>
+    </>
   );
 }
 

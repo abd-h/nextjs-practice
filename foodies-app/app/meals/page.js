@@ -1,14 +1,39 @@
-import React from 'react';
+import { Suspense } from 'react';
 import Link from "next/link";
 
+import classes from './page.module.css';
+import MealsGrid from '@/components/meals/meals-grid';
+import { getMeals } from '@/lib/meals';
+
+const Meals = async () => {
+  const meals = await getMeals();
+  return <MealsGrid meals={meals} />;
+}
+
 const MealsPage = () => {
+  
   return (
-    <main>
-          <h1>MealsPage</h1>
-          <p><Link href='/meals/meal-1' >Meal-1</Link></p>
-          <p><Link href='/meals/meal-2' >Meal-2</Link></p>
-          <p><Link href='./' >Back</Link></p>
-    </main>
+    <>
+      <header className={classes.header}>
+        <h1>
+          Delicious Meals Created{" "}
+          <span className={classes.highlight}>by you</span>
+        </h1>
+        <p>
+          Choose your favourite recipe and cooke it yourself. It's easy and fun!
+        </p>
+        <p className="cta">
+          <Link href="/meals/share">Share your favourite recipe</Link>
+        </p>
+      </header>
+      <main>
+        <Suspense
+          fallback={<p className={classes.loading}>Fetching meals...</p>}
+        >
+          <Meals />
+        </Suspense>
+      </main>
+    </>
   );
 }
 
