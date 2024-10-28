@@ -1,14 +1,18 @@
 import Image from "next/image";
 import classes from "./page.module.css";
 import { getMeal } from "@/lib/meals";
+import { notFound } from "next/navigation";
 
 const MealDetailPage = ({ params }) => {
   const param = params.slug;
   const meal = getMeal(param);
 
+  if (!meal) {
+    notFound()
+  }
+
   meal.instructions = meal.instructions.replace(/\n/g, '<br />')
 
-  console.log(meal.title);
   return (
     <>
       <header className={classes.header}>
