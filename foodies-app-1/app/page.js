@@ -1,9 +1,23 @@
+import Link from "next/link";
+import './globals.css';
+
 export default function Home() {
   return (
-    <main>
-      <h1 style={{ color: 'white', textAlign: 'center' }}>
+    <>
+      <h1 style={{ color: "white", textAlign: "center" }}>
         Time to get started!
       </h1>
-    </main>
+      <main className="main">
+        <p>
+          <Link href="/meals">Meals</Link>
+        </p>
+        <p>
+          <Link href="/meals/share">Share Meals Page</Link>
+        </p>
+        <p>
+          <Link href="/community">Community</Link>
+        </p>
+      </main>
+    </>
   );
 }
