@@ -1,0 +1,17 @@
+.header {
+  text-align: center;
+  color: white;
+}
+
+.main {
+  text-align: center;
+  color: bisque;
+}
+
+.main p {
+    color: black;
+}
+
+.main a {
+    color: wheat;
+}
