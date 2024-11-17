@@ -1,0 +1,12 @@
+.h1 {
+  color: white;
+  text-align: center;
+  font-weight: 900;
+}
+
+.p,
+.p a {
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}

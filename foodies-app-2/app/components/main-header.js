@@ -1,0 +1,30 @@
+const { default: Link } = require("next/link");
+import Image from "next/image";
+import classes from "./main-header.module.css";
+import logoImage from "@/assets/icons/meal.png";
+import MainHeaderBackground from "./main-header-background";
+const MainHeader = () => {
+  return (
+    <>
+      <MainHeaderBackground />
+      <header className={classes.header}>
+        <Link className={classes.logo} href="/">
+          <Image src={logoImage} alt="A plate with food" priority />
+          NextLevel Food
+        </Link>
+        <nav className={classes.nav}>
+          <ul>
+            <li>
+              <Link href="/meals">Browse Meals</Link>
+            </li>
+            <li>
+              <Link href="/community">Community</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </>
+  );
+};
+
+export default MainHeader;
