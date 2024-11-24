@@ -9,8 +9,7 @@ import NavLink from './nav-link';
 
 
 const MainHeader = () => {
-    const path = usePathname();
-    console.log(path);
+  
 
   return (
     <>
@@ -29,7 +28,7 @@ const MainHeader = () => {
             </li>
             <li>
               <NavLink href="/community" >
-                Community
+               Foodies Community
               </NavLink>
             </li>
           </ul>
