@@ -1,17 +1,50 @@
-import Link from 'next/link';
-import classes from './page.module.css';
+import Link from "next/link";
+import Image from "next/image";
+import classes from "./page.module.css";
+import { getMeal } from "@/app/lib/meals";
+import NavLink from "@/app/components/nav-link";
+import { notFound } from "next/navigation";
 
-const DynamicPage = ({params}) => {
+const MealDetailsPage = ({ params }) => {
+  const meal = getMeal(params.mealSlug);
+  if (!meal) {
+    notFound();
+  }
 
-    return (
-      <>
-        <h1 className={classes.h1}>Slugs</h1>
-        <p className={classes.p}>{params.mealSlug}</p>
-        <p className={classes.p}>
-          <Link href="./">Back</Link>
-        </p>
-      </>
-    );
-}
+  let { title, creator, creator_email, summary, image, instructions } = meal;
+  instructions = instructions.replace(/\n/g, "<br />");
 
-export default DynamicPage;
+  
+
+  return (
+    <>
+      <header className={classes.header}>
+        <div className={classes.image}>
+          <Image src={image} alt={title} fill />
+        </div>
+        <div className={classes.headerText}>
+          <h1>{title}</h1>
+          <p className={classes.creator}>
+            Creator by{" "}
+            <a href={`mailto:${creator_email}`} className={classes.highlight}>
+              {creator}
+            </a>
+          </p>
+          <p className={classes.summary}>{summary}</p>
+        </div>
+      </header>
+      <main>
+        <p
+          className={classes.instructions}
+          dangerouslySetInnerHTML={{ __html: instructions }}
+        ></p>
+
+        <NavLink className={classes.highlight} href="./">
+          Back
+        </NavLink>
+      </main>
+    </>
+  );
+};
+
+export default MealDetailsPage;
