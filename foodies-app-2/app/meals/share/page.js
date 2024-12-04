@@ -1,6 +1,7 @@
 import ImagePicker from "@/app/components/meals/image-picker";
 import classes from "./page.module.css";
 import { shareMealData } from "@/app/lib/share-meal";
+import SubmitButton from "./submit-button";
 
 export default async function ShareMealPage() {
 
@@ -42,9 +43,7 @@ export default async function ShareMealPage() {
             ></textarea>
           </p>
          <ImagePicker label='Picked image' name='image' />
-          <p className={classes.actions}>
-            <button type="submit">Share Meal</button>
-          </p>
+          <SubmitButton />
         </form>
       </main>
     </>

@@ -5,6 +5,18 @@ import { getMeal } from "@/app/lib/meals";
 import NavLink from "@/app/components/nav-link";
 import { notFound } from "next/navigation";
 
+export const generateMetadata = async ({ params }) => {
+  const meal = getMeal(params.mealSlug);
+  // to insure you get dynamic error page as well
+  if (!meal) {
+    notFound();
+  }
+  return {
+    title: meal.title,
+    description: meal.summary,
+  }
+}
+
 const MealDetailsPage = ({ params }) => {
   const meal = getMeal(params.mealSlug);
   if (!meal) {

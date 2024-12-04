@@ -40,7 +40,7 @@ const ImagePicker = ({ name, label }) => {
           type="file"
           name={name}
           id={name}
-          accept="image/png, image/jpeg"
+          accept="image/png, image/jpg"
           onChange={handleImageChange}
           required
         />
