@@ -4,6 +4,7 @@ import { shareMealData } from "@/app/lib/share-meal";
 import SubmitButton from "./submit-button";
 
 export default async function ShareMealPage() {
+  // const state = useFormState()
 
   return (
     <>
