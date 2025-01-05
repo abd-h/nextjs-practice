@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import classes from "./images-slideshow.module.css";
@@ -25,9 +27,9 @@ export default function ImageSlideshow() {
   const [currentImageIndex, setCurrentImageIndex] = useState();
 
   useEffect(() => {
-    const interval = setTimeout(() => {
+    const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
-        prevIndex > images.length - 1 ? prevIndex + 1 : 0
+        prevIndex < images.length - 1 ? prevIndex + 1 : 0
       );
     }, 5000);
 
@@ -37,7 +39,7 @@ export default function ImageSlideshow() {
   return (
     <div className={classes.slideshow}>
       {images.map((image, index) => (
-        <Image key={index} src={image.image} alt={image.alt} className={index === currentImageIndex ? classes.active : ''} />
+        <Image key={index} src={image.image} alt={image.alt} className={index === currentImageIndex ? classes.active : ''} priority/>
       ))}
     </div>
   );
