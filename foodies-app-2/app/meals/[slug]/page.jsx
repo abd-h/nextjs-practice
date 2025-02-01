@@ -5,6 +5,19 @@ import classes from "./page.module.css";
 import { getMeal } from "@/app/lib/meal";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({ params }) {
+  const meal = await getMeal(params.slug);
+  
+  console.log(meal);
+  if (!meal) {
+    notFound();
+  }
+  return {
+    title: meal.title,
+    description: meal.summary,
+  }
+}
+
 export default async function DynamicPage({ params }) {
 
     // const meal = await getMeal(params.slug);

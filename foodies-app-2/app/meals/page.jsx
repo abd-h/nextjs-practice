@@ -6,6 +6,12 @@ import MealsGrid from "../component/meals/meals-grid";
 import { getMeals } from "../lib/meal";
 import MealsLoadingPage from "./loading-text";
 
+export const metadata = {
+  title: 'All Meals',
+  description: 'Delicious Meals'
+}
+
+
 async function Meals() {
   const meals = await getMeals();
 
@@ -13,6 +19,8 @@ async function Meals() {
 }
 
 export default async function MealsPage() {
+
+
   return (
     <>
       <header className={classes.header}>
