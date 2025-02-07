@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import MainHeaderBackground from "./main-header-background";
-import NavLinks from "./main-header-navlinks";
+import NavLink from "./navlink";
 
-import classes from "./header.module.css";
+import classes from "./main-header.module.css";
 
 import logoImage from "@/assets/logo.png";
 
@@ -20,8 +20,8 @@ export default function MainHeader() {
         <nav className={classes.nav}>
           <ul>
             <li>
-              <NavLinks className={classes.active? classes.active : ''} end href="/meals">Meals</NavLinks>
-              <NavLinks href="/community">Community</NavLinks>
+              <NavLink className={classes.active? classes.active : ''} end href="/meals">Meals</NavLink>
+              <NavLink href="/community">Community</NavLink>
             </li>
           </ul>
         </nav>
