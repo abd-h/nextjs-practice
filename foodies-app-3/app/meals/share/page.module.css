@@ -96,3 +96,9 @@
   color: #979797;
   cursor: not-allowed;
 }
+
+.span {
+  color: red;
+  font-weight: bold;
+  letter-spacing: 1.56px;
+}

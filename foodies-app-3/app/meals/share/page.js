@@ -1,14 +1,19 @@
 'use client'
 
+import { useFormState } from 'react-dom';
+
 import ImagePicker from "@/components/meals/image-picker";
 import classes from "./page.module.css";
 import { shareMeal } from "@/lib/share-meal-action";
-
-
-
+import SubmitBtn from '@/components/meals/submit-button';
 
 
 export default function ShareMealPage() {
+  const [state, formData] = useFormState(shareMeal, {message: null});
+  
+  
+  console.log(state);
+  
   
   return (
     <>
@@ -19,7 +24,7 @@ export default function ShareMealPage() {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className={classes.main}>
-        <form className={classes.form} action={ shareMeal}>
+        <form className={classes.form} action={formData}>
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>
@@ -33,10 +38,16 @@ export default function ShareMealPage() {
           <p>
             <label htmlFor="title">Title</label>
             <input type="text" id="title" name="title" required />
+            {state.title && (
+              <span className={classes.span}> {state.title} </span>
+            )}
           </p>
           <p>
             <label htmlFor="summary">Short Summary</label>
             <input type="text" id="summary" name="summary" required />
+            {state.summary && (
+              <span className={classes.span}> {state.summary} </span>
+            )}
           </p>
           <p>
             <label htmlFor="instructions">Instructions</label>
@@ -46,11 +57,14 @@ export default function ShareMealPage() {
               rows="10"
               required
             ></textarea>
+            {state.instructions && (
+              <span className={classes.span}> {state.instructions} </span>
+            )}
           </p>
-          <ImagePicker label='Your Image' name='image' />
-          <p className={ classes.actions }>
-            
-            <button type="submit">Share Meal</button>
+          <ImagePicker label="Your Image" name="image" />
+          {state.image && <span className={classes.span}> {state.image} </span>}
+          <p className={classes.actions}>
+            <SubmitBtn type='submit'/>
           </p>
         </form>
       </main>
